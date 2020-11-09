@@ -14,13 +14,14 @@ span.innerHTML = ".";
 var canvas = document.getElementById("canvas");
 canvas.appendChild(span);
 var rect = span.getBoundingClientRect();
-var span_width  = rect.width,
-    span_height = rect.height;
+var span_width = rect.width,
+  span_height = rect.height;
 canvas.removeChild(span);
 
 var image = new Image();
-image.src = "https://static.lurenjia.in/static/2020/11/quine-image-generator/image.png";
-image.crossOrigin = '';
+image.src =
+  "https://static.lurenjia.in/static/2020/11/quine-image-generator/image.png";
+image.crossOrigin = "";
 image.onload = function () {
   var cnvs = document.createElement("canvas");
   cnvs.width = image.width;
@@ -30,20 +31,20 @@ image.onload = function () {
 
   var ctx = cnvs.getContext("2d");
   ctx.drawImage(image, 0, 0);
-      // 每个字所占像素
+  // 每个字所占像素
   var per_box = Math.floor((cnvs.width * cnvs.height) / text.length),
-      // 字符宽高比
-      ratio = span_height / span_width,
-      // 横向字符数
-      x_size = Math.sqrt(per_box / ratio),
-      // 纵向字符数
-      y_size = per_box / x_size;
+    // 字符宽高比
+    ratio = span_height / span_width,
+    // 横向字符数
+    x_size = Math.sqrt(per_box / ratio),
+    // 纵向字符数
+    y_size = per_box / x_size;
 
   try {
     var imageData = ctx.getImageData(0, 0, cnvs.width, cnvs.height);
     // 根据图片数据配置文字样式
     getPoints(imageData);
-    document.getElementById("download").style.display   = "block";
+    document.getElementById("download").style.display = "block";
   } catch (ex) {
     document.getElementById("unsupported").style.display = "block";
     console.error(ex);
@@ -53,17 +54,18 @@ image.onload = function () {
 
   function getPoints(imageData) {
     var i = 0,
-        lastText = "",
-        title = false;
+      lastText = "",
+      title = false;
 
     var target_rows = Math.ceil((cnvs.height - 2) / y_size) + 1,
-        target_cols = Math.ceil((cnvs.width - 2) / x_size) + 1,
-        ypad = span_height;
+      target_cols = Math.ceil((cnvs.width - 2) / x_size) + 1,
+      ypad = span_height;
 
     var qcanvas = document.createElement("canvas");
     qcanvas.width = span_width * target_cols;
     qcanvas.height = span_height * target_rows;
-    document.getElementById("canvas").style.width = span_width * target_cols + "px";
+    document.getElementById("canvas").style.width =
+      span_width * target_cols + "px";
     document.body.appendChild(qcanvas);
     var c = qcanvas.getContext("2d");
 
@@ -74,7 +76,7 @@ image.onload = function () {
       var total = 0;
       var row = document.createElement("span");
       row.style.display = "block";
-      row.style.height  = span_height;
+      row.style.height = span_height;
 
       var ypos = (y * span_height) / y_size;
 
@@ -84,22 +86,26 @@ image.onload = function () {
         if (character == "<") title = false;
         if (title) color = "#fff";
 
-        i     += 1;
+        i += 1;
         total += 1;
 
         var char = document.createElement("span");
         char.style.color = color;
         char.style.font = title ? "bold 15px Courier" : "";
         char.innerHTML = character;
-        
-        row.appendChild(char)
-        
+
+        row.appendChild(char);
+
         var font_style = title ? "bold" : "normal";
         var font_size = "15px";
 
         // 避免这段代码本身被识别为高亮，所以绕了个弯
         lastText = (lastText + character).substr(-13);
-        if (lastText.indexOf("<title>") !== -1 && lastText.indexOf("<head>") !== -1) title = true;
+        if (
+          lastText.indexOf("<title>") !== -1 &&
+          lastText.indexOf("<head>") !== -1
+        )
+          title = true;
 
         c.textBaseline = "bottom";
         c.font = font_style + " " + font_size + " " + "Courier";
@@ -109,7 +115,7 @@ image.onload = function () {
       }
       document.getElementById("canvas").appendChild(row);
     }
-    
+
     document.body.removeChild(qcanvas);
   }
 };
@@ -139,7 +145,6 @@ function getColor(imageData, x, y) {
   return "rgb(" + red + "," + green + "," + blue + ")";
 }
 
-
 document.getElementById("save").onclick = function (ev) {
   ev.preventDefault();
 
@@ -151,12 +156,12 @@ document.getElementById("save").onclick = function (ev) {
   document.body.appendChild(e);
   e.click();
   document.body.removeChild(e);
-}
+};
 
 var charCode = document.getElementsByClassName("charcode");
 for (var i = 0; i < charCode.length; i++) {
   charCode[i].innerHTML = String.fromCharCode(charCode[i].innerHTML);
 }
 
-document.getElementById("unsupported").innerHTML
-  = "Your browser is unsupported, please use the newest version of Firefox/Chrome!";
+document.getElementById("unsupported").innerHTML =
+  "Your browser is unsupported, please use the newest version of Firefox/Chrome!";
