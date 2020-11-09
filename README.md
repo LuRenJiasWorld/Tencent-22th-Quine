@@ -4,6 +4,6 @@
 
 值此司庆之际，使用JS写一段Quine Code来为公司庆生~
 
-提示：点击0.25x可以看到全貌，点击网页中的`into html`可以下载构成这张图片的文本，打开后会显示相同的网页~
+提示：点击网页中的`into html`可以下载构成这张图片的文本，打开后会显示相同的网页~
 
 预览：[https://codepen.io/LuRenJiasWorld/full/QWEZMXX](https://codepen.io/LuRenJiasWorld/full/QWEZMXX)
