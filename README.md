@@ -1,5 +1,7 @@
 # Tencent-22th-Quine
 
+![https://static.lurenjia.in/static/2020/11/quine-image-generator/QQ20201109-185038@2x.png](https://static.lurenjia.in/static/2020/11/quine-image-generator/QQ20201109-185038@2x.png)
+
 自产生程序(Quine)是以哲学家奎恩命名的，能输出自身源码的源码。
 
 值此司庆之际，使用JS写一段Quine Code来为公司庆生~
