@@ -1,0 +1,14 @@
+{
+  "name": "quine-image-generator",
+  "version": "1.0.0",
+  "description": "A simple quine image generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Benjamin Chris",
+  "license": "ISC",
+  "devDependencies": {
+    "html-minifier": "^4.0.0"
+  }
+}

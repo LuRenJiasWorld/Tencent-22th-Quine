@@ -1,0 +1,32 @@
+body {
+    background-color: #000;
+    font: 15px Courier;
+}
+
+#unsupported,
+#download,
+#copyright {
+    color: #FFF;
+    padding-top: 20px;
+    font-family: Courier;
+    text-align: center;
+}
+
+#canvas {
+    margin: 0 auto;
+}
+
+a {
+    color: #2A6CA9;
+    text-decoration: none;
+}
+
+a:hover,
+a:active {
+    color: #2C87CC;
+    text-decoration: underline;
+}
+
+.color-red {
+    color: red;
+}
